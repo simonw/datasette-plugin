@@ -1,5 +1,5 @@
 name: Publish Python Package
-
+{% raw %}
 on:
   release:
     types: [created]
@@ -34,3 +34,4 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
         twine upload dist/*
+{% endraw %}
