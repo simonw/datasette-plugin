@@ -32,4 +32,4 @@ jobs:
         pwd
         cd $HOME
         cat $GITHUB_WORKSPACE/input-for-demo.txt | cookiecutter $GITHUB_WORKSPACE
-        find $GITHUB_WORKSPACE
+        find $HOME
