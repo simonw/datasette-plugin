@@ -27,7 +27,7 @@ jobs:
     - name: Run tests
       run: pytest
     - name: Publish
-      if: success() && secrets.PYPI_TOKEN
+      if: ${{ success() && secrets.PYPI_TOKEN }}
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
