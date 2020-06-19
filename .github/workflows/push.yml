@@ -50,3 +50,15 @@ jobs:
         git add -A .
         git commit -m "Demo of datasette-plugin ${GITHUB_SHA}" || exit 0
         git push -u origin main
+    - name: Post commit comment
+      run: |-
+        cd datasette-plugin-template-demo
+        export FULL_SHA=$(git rev-parse HEAD)
+        export SHORT_SHA=${FULL_SHA::8}
+        export NEWLINE=$'\n'
+        echo '{}' | jq --arg v "Demo: https://github.com/simonw/datasette-plugin-template-demo/tree/$SHORT_SHA" \
+          '. + { text: $v }' | \
+        curl -sL  -X POST -d @- \
+          -H "Content-Type: application/json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
