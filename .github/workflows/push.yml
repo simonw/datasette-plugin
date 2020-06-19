@@ -9,7 +9,15 @@ jobs:
   update_demo:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout datasette-plugin
+      uses: actions/checkout@v2
+      with:
+        path: main
+    - name: Checkout datasette-plugin-template-demo
+      uses: actions/checkout@v2
+      with:
+        repository: simonw/datasette-plugin-template-demo
+        path: datasette-plugin-template-demo-current
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -25,11 +33,15 @@ jobs:
       run: |
         pip install cookiecutter
     - name: Build demo from template
-      run: |
-        echo '$HOME is' $HOME
-        echo '$GITHUB_WORKSPACE is' $GITHUB_WORKSPACE
-        echo 'pwd = '
-        pwd
-        cd $HOME
-        cat $GITHUB_WORKSPACE/input-for-demo.txt | cookiecutter $GITHUB_WORKSPACE
-        find $HOME
+      run: |-
+        cat main/input-for-demo.txt | cookiecutter main
+        find datasette-plugin-template-demo
+    - name: Push to git
+      run: |-
+        # Move the .git folder across
+        mv datasette-plugin-template-demo-current/.git datasette-plugin-template-demo
+        # Commit and push the changes
+        cd datasette-plugin-template-demo
+        git add -A .
+        git commit -m "Latest demo: ${GITHUB_SHA}" || exit 0
+        git push
