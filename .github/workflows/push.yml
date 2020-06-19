@@ -18,6 +18,7 @@ jobs:
       with:
         repository: simonw/datasette-plugin-template-demo
         path: datasette-plugin-template-demo-current
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -44,12 +45,8 @@ jobs:
         mv datasette-plugin-template-demo-current/.git datasette-plugin-template-demo
         # Commit and push the changes
         cd datasette-plugin-template-demo
-        echo "Current branch is:"
-        git branch
-        echo ""
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
         git add -A .
-        git remote set-url origin "https://simonw:$PERSONAL_ACCESS_TOKEN_FOR_PUSH@github.com/simonw/datasette-plugin-template-demo.git"
         git commit -m "Latest demo: ${GITHUB_SHA}" || exit 0
         git push -u origin main
