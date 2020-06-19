@@ -26,7 +26,7 @@ To set up this plugin locally, first checkout the code. Then create a new virtua
 
 Or if you are using `pipenv`:
 
-    pipenv shell`
+    pipenv shell
 
 Now install the dependencies and tests:
 
