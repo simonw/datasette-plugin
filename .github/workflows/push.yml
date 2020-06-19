@@ -27,6 +27,7 @@ jobs:
     - name: Build demo from template
       run: |
         cd $HOME
-        echo "plugin template demo\nDemonstrating https://github.com/simonw/datasette-plugin\n\n\nsimonw\nSimon Willison" \
-          | cookiecutter $GITHUB_WORKSPACE
+        echo "plugin template demo\nDemonstrating https://github.com/simonw/datasette-plugin\n\n\nsimonw\nSimon Willison" > input.txt
+        cat input.txt
+        cat input.txt | cookiecutter $GITHUB_WORKSPACE
         find $GITHUB_WORKSPACE
