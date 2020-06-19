@@ -1,5 +1,10 @@
 name: Update demo
 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   update_demo:
     runs-on: ubuntu-latest
