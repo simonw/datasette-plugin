@@ -26,6 +26,10 @@ jobs:
         pip install cookiecutter
     - name: Build demo from template
       run: |
+        echo '$HOME is' $HOME
+        echo '$GITHUB_WORKSPACE is' $GITHUB_WORKSPACE
+        echo 'pwd = '
+        pwd
         cd $HOME
         echo "plugin template demo\nDemonstrating https://github.com/simonw/datasette-plugin\n\n\nsimonw\nSimon Willison" > input.txt
         cat input.txt
