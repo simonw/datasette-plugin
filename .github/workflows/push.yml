@@ -1,0 +1,27 @@
+name: Update demo
+
+jobs:
+  update_demo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - uses: actions/cache@v2
+      name: Configure pip caching
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Install dependencies
+      run: |
+        pip install cookiecutter
+    - name: Build demo from template
+      run: |
+        cd $HOME
+        echo "plugin template demo\nDemonstrating https://github.com/simonw/datasette-plugin\n\n\nsimonw\nSimon Willison" \
+          | cookiecutter $GITHUB_WORKSPACE
+        find $GITHUB_WORKSPACE
