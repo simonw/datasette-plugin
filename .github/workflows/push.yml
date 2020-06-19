@@ -31,6 +31,5 @@ jobs:
         echo 'pwd = '
         pwd
         cd $HOME
-        cat input.txt
         cat $GITHUB_WORKSPACE/input-for-demo.txt | cookiecutter $GITHUB_WORKSPACE
         find $GITHUB_WORKSPACE
