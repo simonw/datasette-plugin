@@ -57,7 +57,7 @@ jobs:
         export SHORT_SHA=${FULL_SHA::8}
         export NEWLINE=$'\n'
         echo '{}' | jq --arg v "Demo: https://github.com/simonw/datasette-plugin-template-demo/tree/$SHORT_SHA" \
-          '. + { text: $v }' | \
+          '. + { body: $v }' | \
         curl -sL  -X POST -d @- \
           -H "Content-Type: application/json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
