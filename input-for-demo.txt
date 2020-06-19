@@ -1,0 +1,6 @@
+plugin template demo
+Demonstrating https://github.com/simonw/datasette-plugin
+
+
+simonw
+Simon Willison
