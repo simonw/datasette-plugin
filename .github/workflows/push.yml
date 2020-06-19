@@ -37,6 +37,8 @@ jobs:
         cat main/input-for-demo.txt | cookiecutter main
         find datasette-plugin-template-demo
     - name: Push to git
+      env:
+        PERSONAL_ACCESS_TOKEN_FOR_PUSH: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
       run: |-
         # Move the .git folder across
         mv datasette-plugin-template-demo-current/.git datasette-plugin-template-demo
@@ -45,5 +47,6 @@ jobs:
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
         git add -A .
+        git remote set-url origin https://simonw:$PERSONAL_ACCESS_TOKEN_FOR_PUSH@github.com/simonw/datasette-plugin-template-demo.git
         git commit -m "Latest demo: ${GITHUB_SHA}" || exit 0
         git push
