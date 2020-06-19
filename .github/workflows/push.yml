@@ -42,6 +42,8 @@ jobs:
         mv datasette-plugin-template-demo-current/.git datasette-plugin-template-demo
         # Commit and push the changes
         cd datasette-plugin-template-demo
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
         git add -A .
         git commit -m "Latest demo: ${GITHUB_SHA}" || exit 0
         git push
