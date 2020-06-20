@@ -5,7 +5,7 @@ import httpx
 
 @pytest.mark.asyncio
 async def test_plugin_is_installed():
-    app = Datasette([], memory=True,).app()
+    app = Datasette([], memory=True).app()
     async with httpx.AsyncClient(app=app) as client:
         response = await client.get("http://localhost/-/plugins.json")
         assert 200 == response.status_code
