@@ -22,6 +22,8 @@ Run `cookiecutter gh:simonw/datasette-plugin` and then answer the prompts. Here'
     github_username []: simonw
     author_name []: Simon Willison
 
+I strongly recommend accepting the suggested value for "hyphenated" and "underscored" by hitting enter on those prompts.
+
 This will create a directory called `datasette-plugin-template-demo` - the plugin name you enter is converted to lowercase and uses hyphens instead of spaces.
 
 See https://github.com/simonw/datasette-plugin-template-demo for the output of this example.
