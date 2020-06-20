@@ -20,7 +20,7 @@ setup(
     author="{{ cookiecutter.author_name }}",{% endif %}{% if cookiecutter.github_username %}
     url="https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}",
     project_urls={
-        "Issues": "https://gitlab.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/issues",
+        "Issues": "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/issues",
         "CI": "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/actions",
         "Changelog": "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/releases",
     },{% endif %}
