@@ -22,7 +22,7 @@ jobs:
           ${{ runner.os }}-publish-pip-
     - name: Install dependencies
       run: |
-        pip install -e '.[test]'                                                  
+        pip install -e '.[test]'
         pip install setuptools wheel twine
     - name: Run tests
       run: pytest
