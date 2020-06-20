@@ -26,9 +26,46 @@ This will create a directory called `datasette-plugin-template-demo` - the plugi
 
 See https://github.com/simonw/datasette-plugin-template-demo for the output of this example.
 
+## Developing your plugin
+
+Having created the new plugin structure from the template, here's how to start working on the plugin.
+
+If your plugin is called `datasette-my-new-plugin`, you can start working on it like so:
+
+    cd datasette-my-new-plugin
+    # Create and activate a virtual environment:
+    python3 -mvenv venv
+    source venv/bin/activate
+    # Install dependencies so you can edit the plugin:
+    pip install -e '.[test]'
+    # With zsh you have to run this again for some reason:
+    source venv/bin/activate
+    # Confirm your plugin is visible to Datasette:
+    datasette plugins
+
+You should see the following:
+
+    [
+        {
+            "name": "datasette-my-new-plugin",
+            "static": false,
+            "templates": false,
+            "version": "0.1",
+            "hooks": []
+        }
+    ]
+
+You can run the default test for your plugin like so:
+
+    pytest
+
+This will execute the test in `tests/test_my_new_plugin.py`, which confirms that the plugin has been installed.
+
+Now you can open the `datasette_my_new_plugin/__init__.py` file and start adding your [plugin hooks](https://datasette.readthedocs.io/en/stable/plugins.html#plugin-hooks).
+
 ## Creating a Git repository for your plugin
 
-Having created your new plugin template, you can initialize a Git repository for it like this:
+You can initialize a Git repository for your plugin like this:
 
     cd datasette-my-new-plugin
     git init
