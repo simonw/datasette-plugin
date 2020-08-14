@@ -10,7 +10,7 @@
 
 Install this plugin in the same environment as Datasette.
 
-    $ pip install datasette-{{ cookiecutter.hyphenated }}
+    $ datasette install datasette-{{ cookiecutter.hyphenated }}
 
 ## Usage
 
