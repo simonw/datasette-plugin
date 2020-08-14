@@ -29,8 +29,6 @@ setup(
     packages=["datasette_{{ cookiecutter.underscored }}"],
     entry_points={"datasette": ["{{ cookiecutter.underscored }} = datasette_{{ cookiecutter.underscored }}"]},
     install_requires=["datasette"],
-    extras_require={
-        "test": ["pytest", "pytest-asyncio", "httpx"]
-    },
+    extras_require={"test": ["pytest", "pytest-asyncio", "httpx"]},
     tests_require=["datasette-{{ cookiecutter.hyphenated }}[test]"],
 )
