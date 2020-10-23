@@ -31,4 +31,5 @@ setup(
     install_requires=["datasette"],
     extras_require={"test": ["pytest", "pytest-asyncio", "httpx"]},
     tests_require=["datasette-{{ cookiecutter.hyphenated }}[test]"],
+    python_requires=">=3.6",
 )
