@@ -63,7 +63,7 @@ You can run the default test for your plugin like so:
 
 This will execute the test in `tests/test_my_new_plugin.py`, which confirms that the plugin has been installed.
 
-Now you can open the `datasette_my_new_plugin/__init__.py` file and start adding your [plugin hooks](https://datasette.readthedocs.io/en/stable/plugins.html#plugin-hooks).
+Now you can open the `datasette_my_new_plugin/__init__.py` file and start adding your [plugin hooks](https://docs.datasette.io/en/stable/plugin_hooks.html).
 
 ## Creating a Git repository for your plugin
 
