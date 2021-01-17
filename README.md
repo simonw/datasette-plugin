@@ -1,6 +1,6 @@
 # datasette-plugin cookiecutter template
 
-A cookiecutter template for creating new Datasette plugins.
+A cookiecutter template for creating new Datasette plugins. See [Writing Plugins](https://docs.datasette.io/en/stable/writing_plugins.html) in the Datasette documentation for more details.
 
 ## Installation
 
