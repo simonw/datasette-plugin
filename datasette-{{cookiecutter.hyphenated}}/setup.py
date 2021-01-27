@@ -12,6 +12,10 @@ def get_long_description():
         return fp.read()
 
 
+{% set package_datas = [] -%}
+{% if cookiecutter.include_static_directory %}{{ package_datas.append('"static/*"') or "" }}{% endif -%}
+{% if cookiecutter.include_templates_directory %}{{ package_datas.append('"templates/*"') or "" }}{% endif -%}
+
 setup(
     name="datasette-{{ cookiecutter.hyphenated }}",
     description="{{ cookiecutter.description }}",
@@ -30,6 +34,9 @@ setup(
     entry_points={"datasette": ["{{ cookiecutter.underscored }} = datasette_{{ cookiecutter.underscored }}"]},
     install_requires=["datasette"],
     extras_require={"test": ["pytest", "pytest-asyncio"]},
-    tests_require=["datasette-{{ cookiecutter.hyphenated }}[test]"],
+    tests_require=["datasette-{{ cookiecutter.hyphenated }}[test]"],{% if cookiecutter.include_static_directory or cookiecutter.include_templates_directory %}
+    package_data={
+        "datasette_{{ cookiecutter.underscored }}": [{{ ", ".join(package_datas) }}]
+    },{% endif %}
     python_requires=">=3.6",
 )

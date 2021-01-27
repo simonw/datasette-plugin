@@ -4,5 +4,7 @@
   "hyphenated": "{{ '-'.join(cookiecutter['plugin_name'].lower().split()).replace('_', '-') }}",
   "underscored": "{{ cookiecutter.hyphenated.replace('-', '_') }}",
   "github_username": "",
-  "author_name": ""
+  "author_name": "",
+  "include_static_directory": "",
+  "include_templates_directory": ""
 }
