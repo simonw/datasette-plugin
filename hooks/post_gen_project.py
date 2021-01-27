@@ -6,11 +6,8 @@ include_static_directory = bool("{{ cookiecutter.include_static_directory }}")
 include_templates_directory = bool("{{ cookiecutter.include_templates_directory }}")
 
 
-print(os.getcwd())
-
-
-if not include_static_directory:
-    shutil.rmtree(
+if include_static_directory:
+    os.makedirs(
         os.path.join(
             os.getcwd(),
             "datasette_{{ cookiecutter.underscored }}",
@@ -19,8 +16,8 @@ if not include_static_directory:
     )
 
 
-if not include_templates_directory:
-    shutil.rmtree(
+if include_templates_directory:
+    os.makedirs(
         os.path.join(
             os.getcwd(),
             "datasette_{{ cookiecutter.underscored }}",
