@@ -21,8 +21,12 @@ Run `cookiecutter gh:simonw/datasette-plugin` and then answer the prompts. Here'
     underscored [plugin_template_demo]: 
     github_username []: simonw
     author_name []: Simon Willison
+    include_static_directory []: y
+    include_templates_directory []: y
 
 I strongly recommend accepting the suggested value for "hyphenated" and "underscored" by hitting enter on those prompts.
+
+The `include_static_directory` and `include_templates_directory` prompts will cause `../static` and `../templates` folders to be created and added to `setup.py` as `package_data`. Use these if your plugin needs to include templates or static assets (CSS and JavaScript). Leave these prompts blank if you do not want these directories to be created.
 
 This will create a directory called `datasette-plugin-template-demo` - the plugin name you enter is converted to lowercase and uses hyphens instead of spaces.
 
