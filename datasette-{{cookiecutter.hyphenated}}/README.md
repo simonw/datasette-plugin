@@ -5,7 +5,7 @@
 [![Tests](https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/workflows/Test/badge.svg)](https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/actions?query=workflow%3ATest)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/blob/main/LICENSE){% endif %}
 
-{{ cookiecutter.description|default:"" }}
+{{ cookiecutter.description or "" }}
 
 ## Installation
 
