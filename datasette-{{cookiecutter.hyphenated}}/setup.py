@@ -18,7 +18,7 @@ def get_long_description():
 
 setup(
     name="datasette-{{ cookiecutter.hyphenated }}",
-    description="{{ cookiecutter.description }}",
+    description="{{ cookiecutter.description|default:"" }}",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",{% if cookiecutter.author_name %}
     author="{{ cookiecutter.author_name }}",{% endif %}{% if cookiecutter.github_username %}
