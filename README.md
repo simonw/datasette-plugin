@@ -2,6 +2,8 @@
 
 A cookiecutter template for creating new Datasette plugins. See [Writing Plugins](https://docs.datasette.io/en/stable/writing_plugins.html) in the Datasette documentation for more details.
 
+Use this template on your own machine with cookiecutter, or create a brand new repository based on this template entirely through the GitHub web interface using [datasette-plugin-template-repository](https://github.com/simonw/datasette-plugin-template-repository).
+
 ## Installation
 
 You'll need to have [cookiecutter](https://cookiecutter.readthedocs.io/) installed. I recommend pipx for this:
