@@ -42,7 +42,7 @@ If your plugin is called `datasette-my-new-plugin`, you can start working on it 
 
     cd datasette-my-new-plugin
     # Create and activate a virtual environment:
-    python3 -mvenv venv
+    python3 -m venv venv
     source venv/bin/activate
     # Install dependencies so you can edit the plugin:
     pip install -e '.[test]'
