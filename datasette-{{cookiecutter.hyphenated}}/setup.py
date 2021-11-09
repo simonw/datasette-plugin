@@ -33,8 +33,7 @@ setup(
     packages=["datasette_{{ cookiecutter.underscored }}"],
     entry_points={"datasette": ["{{ cookiecutter.underscored }} = datasette_{{ cookiecutter.underscored }}"]},
     install_requires=["datasette"],
-    extras_require={"test": ["pytest", "pytest-asyncio"]},
-    tests_require=["datasette-{{ cookiecutter.hyphenated }}[test]"],{% if cookiecutter.include_static_directory or cookiecutter.include_templates_directory %}
+    extras_require={"test": ["pytest", "pytest-asyncio"]},{% if cookiecutter.include_static_directory or cookiecutter.include_templates_directory %}
     package_data={
         "datasette_{{ cookiecutter.underscored }}": [{{ ", ".join(package_datas) }}]
     },{% endif %}
