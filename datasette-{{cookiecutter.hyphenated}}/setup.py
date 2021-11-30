@@ -29,6 +29,10 @@ setup(
         "Changelog": "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/releases",
     },{% endif %}
     license="Apache License, Version 2.0",
+    classifiers=[
+        "Framework :: Datasette",
+        "License :: OSI Approved :: Apache Software License"
+    ],
     version=VERSION,
     packages=["datasette_{{ cookiecutter.underscored }}"],
     entry_points={"datasette": ["{{ cookiecutter.underscored }} = datasette_{{ cookiecutter.underscored }}"]},
