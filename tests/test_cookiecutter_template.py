@@ -26,6 +26,7 @@ def test_static_and_templates(tmpdir):
         "datasette-foo/datasette_foo/static",
         "datasette-foo/datasette_foo/templates",
         "datasette-foo/README.md",
+        "datasette-foo/LICENSE",
         "datasette-foo/setup.py",
         "datasette-foo/tests",
         "datasette-foo/tests/test_foo.py",
