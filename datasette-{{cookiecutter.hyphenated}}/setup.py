@@ -41,5 +41,5 @@ setup(
     package_data={
         "datasette_{{ cookiecutter.underscored }}": [{{ ", ".join(package_datas) }}]
     },{% endif %}
-    python_requires=">=3.6",
+    python_requires=">=3.7",
 )
