@@ -28,6 +28,7 @@ def test_static_and_templates(tmpdir):
         "datasette-foo/README.md",
         "datasette-foo/LICENSE",
         "datasette-foo/setup.py",
+        "datasette-foo/pytest.ini",
         "datasette-foo/tests",
         "datasette-foo/tests/test_foo.py",
     }
