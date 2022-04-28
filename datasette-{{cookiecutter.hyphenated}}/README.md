@@ -22,7 +22,7 @@ Usage instructions go here.
 To set up this plugin locally, first checkout the code. Then create a new virtual environment:
 
     cd datasette-{{ cookiecutter.hyphenated }}
-    python3 -mvenv venv
+    python3 -m venv venv
     source venv/bin/activate
 
 Now install the dependencies and test dependencies:
