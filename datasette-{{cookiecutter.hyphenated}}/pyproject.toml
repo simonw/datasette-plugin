@@ -2,7 +2,7 @@
 name = "datasette-{{ cookiecutter.hyphenated }}"{% if cookiecutter.author_name %}
 version = "0.1"
 description = "{{ cookiecutter.description or "" }}"
-authors = [{name = "{{ cookiecutter.author_name }}"}]{% endif %}{%
+authors = [{name = "{{ cookiecutter.author_name }}"}]{% endif %}
 license = {text = "Apache-2.0"}
 classifiers = [
     "Framework :: Datasette",
