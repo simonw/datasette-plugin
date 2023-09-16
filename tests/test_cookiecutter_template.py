@@ -27,21 +27,20 @@ def test_static_and_templates(tmpdir):
         "datasette-foo/datasette_foo/templates",
         "datasette-foo/README.md",
         "datasette-foo/LICENSE",
-        "datasette-foo/setup.py",
-        "datasette-foo/pytest.ini",
+        "datasette-foo/pyproject.toml",
         "datasette-foo/tests",
         "datasette-foo/tests/test_foo.py",
     }
     assert (
-        'package_data={\n        "datasette_foo": ["static/*", "templates/*"]\n    }'
-    ) in read_setup_py(tmpdir)
+        "[tool.setuptools.package-data]\n" 'datasette_foo = ["static/*", "templates/*"]'
+    ) in read_pyproject_toml(tmpdir)
 
 
 def test_no_static_or_templates(tmpdir):
     generate(tmpdir, {"plugin_name": "foo", "description": "blah"})
     assert "datasette-foo/datasette_foo/static" not in paths(tmpdir)
     assert "datasette-foo/datasette_foo/templates" not in paths(tmpdir)
-    assert "package_data={" not in read_setup_py(tmpdir)
+    assert "[tools.setuptools.package-data]" not in read_pyproject_toml(tmpdir)
 
 
 def test_static_but_no_templates(tmpdir):
@@ -52,8 +51,8 @@ def test_static_but_no_templates(tmpdir):
     assert "datasette-foo/datasette_foo/static" in paths(tmpdir)
     assert "datasette-foo/datasette_foo/templates" not in paths(tmpdir)
     assert (
-        'package_data={\n        "datasette_foo": ["static/*"]\n    }'
-    ) in read_setup_py(tmpdir)
+        "[tool.setuptools.package-data]\n" 'datasette_foo = ["static/*"]'
+    ) in read_pyproject_toml(tmpdir)
 
 
 def test_templates_but_no_static(tmpdir):
@@ -68,8 +67,8 @@ def test_templates_but_no_static(tmpdir):
     assert "datasette-foo/datasette_foo/static" not in paths(tmpdir)
     assert "datasette-foo/datasette_foo/templates" in paths(tmpdir)
     assert (
-        'package_data={\n        "datasette_foo": ["templates/*"]\n    }'
-    ) in read_setup_py(tmpdir)
+        "[tool.setuptools.package-data]\n" 'datasette_foo = ["templates/*"]'
+    ) in read_pyproject_toml(tmpdir)
 
 
 def generate(directory, context):
@@ -81,8 +80,8 @@ def generate(directory, context):
     )
 
 
-def read_setup_py(tmpdir):
-    return (tmpdir / "datasette-foo" / "setup.py").read_text("utf-8")
+def read_pyproject_toml(tmpdir):
+    return (tmpdir / "datasette-foo" / "pyproject.toml").read_text("utf-8")
 
 
 def paths(directory):

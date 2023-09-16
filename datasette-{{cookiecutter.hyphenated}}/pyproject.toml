@@ -1,0 +1,37 @@
+{% set package_datas = [] -%}
+{% if cookiecutter.include_static_directory %}{{ package_datas.append('"static/*"') or "" }}{% endif -%}
+{% if cookiecutter.include_templates_directory %}{{ package_datas.append('"templates/*"') or "" }}{% endif -%}
+[project]
+name = "datasette-{{ cookiecutter.hyphenated }}"
+version = "0.1"
+description = "{{ cookiecutter.description or "" }}"
+readme = "README.md"{% if cookiecutter.author_name %}
+authors = [{name = "{{ cookiecutter.author_name }}"}]{% endif %}
+license = {text = "Apache-2.0"}
+classifiers=[
+    "Framework :: Datasette",
+    "License :: OSI Approved :: Apache Software License"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "datasette"
+]
+{% if cookiecutter.github_username %}
+[project.urls]
+Homepage = "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}"
+Changelog = "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/releases"
+Issues = "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/issues"
+CI = "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}/actions"{% endif %}
+
+[project.entry-points.datasette]
+{{ cookiecutter.underscored }} = "datasette_{{ cookiecutter.underscored }}"
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-asyncio"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
+{% if cookiecutter.include_static_directory or cookiecutter.include_templates_directory %}
+[tool.setuptools.package-data]
+datasette_{{ cookiecutter.underscored }} = [{{ ", ".join(package_datas) }}]
+{% endif %}
