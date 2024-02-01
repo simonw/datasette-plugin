@@ -97,12 +97,14 @@ The template will have created a GitHub Action which runs your plugin's test sui
 
 The template also includes an Action for publishing packages to [PyPI](https://pypi.org/).
 
-To use this action, you need to create a PyPI account and an API token against that account.
+For this to work, you need to create an environment in your GitHub repository called `release`. You then need to configure PyPI with a new "pending publisher" with the following settings:
 
-Once you have created your account, navigate to https://pypi.org/manage/account/token/ and create an API token. For initial publication of the package you will need to set the scope of the token to "Entire account (all projects)".
+- PyPI Project Name: `datasette-name-of-your-plugin`
+- Owner: Your GitHub username or organization
+- Repository name: The name of your repository
+- Workflow name: `publish.yml`
+- Environment name: `release`
 
-Add that token to your repository as a GitHub secret called `PYPI_TOKEN`. You can find this in the "Settings -> Secrets -> New Secret" area of the repository. The token should begin with the string `pypi-`.
+See [Publish releases to PyPI from GitHub Actions without a password or token](https://til.simonwillison.net/pypi/pypi-releases-from-github) for details.
 
-Now, any time you create a new "Release" on GitHub the Action will build your package and push it to PyPI. The tag for the new release needs to match the `VERSION` string at the top of your `setup.py` file.
-
-After the first release has gone out you can create a new PyPI API token that is scoped just to that project and use that to replace the `PYPI_TOKEN` secret in your GitHub repository settings.
+With that configured, create a GitHub release with a name that corresponds to the version number listed in your `pyproject.toml` file and the action will build and publish a PyPI package for you.
