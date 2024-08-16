@@ -28,7 +28,7 @@ jobs:
       run: |
         pip install -r main/requirements.txt
     - name: Run tests
-      run: pytest main/tests
+      run: python -m pytest main/tests
     - name: Build demo from template
       run: |-
         cat main/input-for-demo.txt | cookiecutter main

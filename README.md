@@ -7,25 +7,25 @@ Use this template on your own machine with cookiecutter, or create a brand new r
 ## Installation
 
 You'll need to have [cookiecutter](https://cookiecutter.readthedocs.io/) installed. I recommend pipx for this:
-
-    pipx install cookiecutter
-
+```bash
+pipx install cookiecutter
+```
 Regular `pip` will work OK too.
 
 ## Usage
 
 Run `cookiecutter gh:simonw/datasette-plugin` and then answer the prompts. Here's an example run:
-
-    $ cookiecutter gh:simonw/datasette-plugin
-    plugin_name []: plugin template demo
-    description []: Demonstrating https://github.com/simonw/datasette-plugin
-    hyphenated [plugin-template-demo]: 
-    underscored [plugin_template_demo]: 
-    github_username []: simonw
-    author_name []: Simon Willison
-    include_static_directory []: y
-    include_templates_directory []: y
-
+```
+$ cookiecutter gh:simonw/datasette-plugin
+plugin_name []: plugin template demo
+description []: Demonstrating https://github.com/simonw/datasette-plugin
+hyphenated [plugin-template-demo]:
+underscored [plugin_template_demo]:
+github_username []: simonw
+author_name []: Simon Willison
+include_static_directory []: y
+include_templates_directory []: y
+```
 I strongly recommend accepting the suggested value for "hyphenated" and "underscored" by hitting enter on those prompts.
 
 The `include_static_directory` and `include_templates_directory` prompts will cause `../static` and `../templates` folders to be created and added to `setup.py` as `package_data`. Use these if your plugin needs to include templates or static assets (CSS and JavaScript). Leave these prompts blank if you do not want these directories to be created.
@@ -39,34 +39,34 @@ See https://github.com/simonw/datasette-plugin-template-demo for the output of t
 Having created the new plugin structure from the template, here's how to start working on the plugin.
 
 If your plugin is called `datasette-my-new-plugin`, you can start working on it like so:
-
-    cd datasette-my-new-plugin
-    # Create and activate a virtual environment:
-    python3 -m venv venv
-    source venv/bin/activate
-    # Install dependencies so you can edit the plugin:
-    pip install -e '.[test]'
-    # With zsh you have to run this again for some reason:
-    source venv/bin/activate
-    # Confirm your plugin is visible to Datasette:
-    datasette plugins
-
+```bash
+cd datasette-my-new-plugin
+# Create and activate a virtual environment:
+python -m venv venv
+source venv/bin/activate
+# Install dependencies so you can edit the plugin:
+pip install -e '.[test]'
+# With zsh you have to run this again for some reason:
+source venv/bin/activate
+# Confirm your plugin is visible to Datasette:
+datasette plugins
+```
 You should see the following:
-
-    [
-        {
-            "name": "datasette-my-new-plugin",
-            "static": false,
-            "templates": false,
-            "version": "0.1",
-            "hooks": []
-        }
-    ]
-
+```json
+[
+    {
+        "name": "datasette-my-new-plugin",
+        "static": false,
+        "templates": false,
+        "version": "0.1",
+        "hooks": []
+    }
+]
+```
 You can run the default test for your plugin like so:
-
-    pytest
-
+```bash
+python -m pytest
+```
 This will execute the test in `tests/test_my_new_plugin.py`, which confirms that the plugin has been installed.
 
 Now you can open the `datasette_my_new_plugin/__init__.py` file and start adding your [plugin hooks](https://docs.datasette.io/en/stable/plugin_hooks.html).
@@ -74,23 +74,23 @@ Now you can open the `datasette_my_new_plugin/__init__.py` file and start adding
 ## Creating a Git repository for your plugin
 
 You can initialize a Git repository for your plugin like this:
-
-    cd datasette-my-new-plugin
-    git init
-    git add .
-    git commit -m "Initial structure from template"
-    # Rename the 'master' branch to 'main':
-    git branch -m master main
-
+```bash
+cd datasette-my-new-plugin
+git init
+git add .
+git commit -m "Initial structure from template"
+# Rename the 'master' branch to 'main':
+git branch -m master main
+```
 ## Publishing your plugin to GitHub
 
 Use https://github.com/new to create a new GitHub repository sharing the same name as your plugin, which should be something like `datasette-my-new-plugin`.
 
 Push your `main` branch to GitHub like this:
-
-    git remote add origin git@github.com:YOURNAME/datasette-my-new-plugin.git
-    git push -u origin main
-
+```bash
+git remote add origin git@github.com:YOURNAME/datasette-my-new-plugin.git
+git push -u origin main
+```
 The template will have created a GitHub Action which runs your plugin's test suite against every commit.
 
 ## Publishing your plugin as a package to PyPI
