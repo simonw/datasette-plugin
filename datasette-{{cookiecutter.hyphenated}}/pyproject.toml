@@ -35,6 +35,7 @@ test = ["pytest", "pytest-asyncio"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"
+asyncio_default_fixture_loop_scope = "function"
 {% if cookiecutter.include_static_directory or cookiecutter.include_templates_directory %}
 [tool.setuptools.package-data]
 datasette_{{ cookiecutter.underscored }} = [{{ ", ".join(package_datas) }}]
