@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout datasette-plugin
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
       with:
         path: main
     - name: Checkout datasette-plugin-template-demo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
       with:
         repository: simonw/datasette-plugin-template-demo
         path: datasette-plugin-template-demo-current
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v6
       with:
-        python-version: "3.11"
+        python-version: "3.14"
         cache: pip
     - name: Install dependencies
       run: |
