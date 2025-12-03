@@ -16,12 +16,16 @@ dependencies = [
     "datasette"
 ]
 
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio"
+]
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.uv]
-package = true
 {% if cookiecutter.github_username %}
 [project.urls]
 Homepage = "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiecutter.hyphenated }}"
@@ -31,9 +35,6 @@ CI = "https://github.com/{{ cookiecutter.github_username }}/datasette-{{ cookiec
 
 [project.entry-points.datasette]
 {{ cookiecutter.underscored }} = "datasette_{{ cookiecutter.underscored }}"
-
-[project.optional-dependencies]
-test = ["pytest", "pytest-asyncio"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"
