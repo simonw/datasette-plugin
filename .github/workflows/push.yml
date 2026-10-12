@@ -38,10 +38,10 @@ jobs:
       env:
         PERSONAL_ACCESS_TOKEN_FOR_PUSH: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
       run: |-
-        # Move the .git folder across
-        mv datasette-plugin-template-demo-current/.git datasette-plugin-template-demo
+        # Keep checkout credentials bound to their original .git directory
+        rsync -a --delete --exclude=.git datasette-plugin-template-demo/ datasette-plugin-template-demo-current/
         # Commit and push the changes
-        cd datasette-plugin-template-demo
+        cd datasette-plugin-template-demo-current
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
         git add -A .
@@ -49,7 +49,7 @@ jobs:
         git push -u origin main
     - name: Post commit comment
       run: |-
-        cd datasette-plugin-template-demo
+        cd datasette-plugin-template-demo-current
         export FULL_SHA=$(git rev-parse HEAD)
         export SHORT_SHA=${FULL_SHA::8}
         export NEWLINE=$'\n'
